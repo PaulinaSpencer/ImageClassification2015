@@ -24,14 +24,6 @@ imgset = [ imageSet(fullfile(rootFolder, 'birdpics')), ...
 [imgset.Count]         % show the corresponding count of images
 
 
-
-minSetCount = min([imgset.Count]); % determine the smallest amount of images in a category
-% 
-% % Use partition method to trim the set.
- imgset = partition(imgset, 4, 'randomize');
-
-%30% random img for training data 70% validation data -- now we're using
-%50%
 [trainingSets, validationSets] = partition(imgset, 0.5, 'randomize');
 
 extractor = @BagOfFeaturesExtractor;

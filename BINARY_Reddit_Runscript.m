@@ -16,11 +16,11 @@ img_filename = img_filenameNOGIF ;
 
 [Q1, Q2, Q3] = Quartiles_data(img_score) ;
 
-Q3
-%class 1: below Q3
-%class 2: above Q3
-class1 = find(img_score<Q3) ; 
-class2 = find(img_score>Q3) ; 
+Q2
+%class 1: below Q2
+%class 2: above Q2
+class1 = find(img_score<Q2) ; 
+class2 = find(img_score>Q2) ; 
 
 %retrieve the filenames for image in each class
 class1_imgNAME = img_filename(class1) ; 
@@ -62,15 +62,6 @@ end
 [imgset.Count]         % show the corresponding count of images
 
 
-
-minSetCount = min([imgset.Count]); % determine the smallest amount of images in a category (if we want all imgsets to be the same size)
-% 
-% % Use partition method to trim the set. (set when we want our code to run
-% fast -- otherwise comment out.  
- imgset = partition(imgset, 10, 'randomize');
-
-%30% random img for training data 70% validation data -- now we're using
-%50%
 [trainingSets, validationSets] = partition(imgset, 0.5, 'randomize');
 
 extractor = @BagOfFeaturesExtractor; %set incase we decide to use .gifs.

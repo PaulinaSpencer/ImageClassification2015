@@ -10,8 +10,8 @@ close all ; clear all;
 rootFolder = fullfile('C:\Users\Paulina\Desktop\Desktop Folders\REU 2015\SURF\Data_Image_sets', 'TVSubreddit') ; 
 
 imgset = [ imageSet(fullfile(rootFolder, 'familyguy')), ...
-            imageSet(fullfile(rootFolder, 'futurama')), ...
-             imageSet(fullfile(rootFolder, 'thesimpsons'))] ;
+           imageSet(fullfile(rootFolder, 'futurama')), ...
+           imageSet(fullfile(rootFolder, 'thesimpsons'))] ;
 
 
 %and now we use the other SURF code....
@@ -20,14 +20,6 @@ imgset = [ imageSet(fullfile(rootFolder, 'familyguy')), ...
 [imgset.Count]         % show the corresponding count of images
 
 
-
-minSetCount = min([imgset.Count]); % determine the smallest amount of images in a category
-% 
-% % Use partition method to trim the set.
- imgset = partition(imgset, 4, 'randomize');
-
-%30% random img for training data 70% validation data -- now we're using
-%50%
 [trainingSets, validationSets] = partition(imgset, 0.5, 'randomize');
 
 extractor = @BagOfFeaturesExtractor;

@@ -57,9 +57,9 @@ end
 
 %creates an image set with each class
 imgset = [imageSet(Class1), ...
-         % imageSet(Class2),...
-          %imageSet(Class3),...
-          %imageSet(Class4), ...
+          imageSet(Class2),...
+          imageSet(Class3),...
+          imageSet(Class4), ...
           imageSet(Class5) ] ;
 
 %sets the description for each image set to be the class number (this is
@@ -74,15 +74,6 @@ end
 { imgset.Description } % display all labels on one line
 [imgset.Count]         % show the corresponding count of images
 
-
-
-minSetCount = min([imgset.Count]); % determine the smallest amount of images in a category
-% 
-% % Use partition method to trim the set.
- imgset = partition(imgset, 2, 'randomize');
-
-%30% random img for training data 70% validation data -- now we're using
-%50%
 [trainingSets, validationSets] = partition(imgset, 0.5, 'randomize');
 
 extractor = @BagOfFeaturesExtractor;

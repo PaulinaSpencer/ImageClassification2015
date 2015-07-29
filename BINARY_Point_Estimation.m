@@ -63,16 +63,6 @@ end
 [imgset.Count]         % show the corresponding count of images
 
 
-
-minSetCount = min([imgset.Count]); % determine the smallest amount of images in a category (if we want all imgsets to be the same size)
-% 
-% % Use partition method to trim the set. (set when we want our code to run
-% fast -- otherwise comment out.  
-imgset = partition(imgset, 2, 'randomize');
-% imgset(2) = partition(imgset(2),4, 'randomize');
-
-%30% random img for training data 70% validation data -- now we're using
-%50%
 [trainingSets, validationSets] = partition(imgset, 0.5, 'randomize');
 
 extractor = @BagOfFeaturesExtractor; %set incase we decide to use .gifs.
